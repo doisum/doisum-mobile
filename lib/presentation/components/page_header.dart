@@ -6,9 +6,25 @@ class PageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: GREEN),
-      child: SizedBox(height: 300,),
-    );
+    return Column(
+      children: [
+        Text(
+          'Healthy Routine',
+          style: BOLD.copyWith(color: WHITE, fontSize: 30),
+        ).padding(10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Bullet(
+              color: WHITE,
+              child: Text(
+                '+ Nova atividade',
+                style: BOLD.copyWith(color: GREEN),
+              ).padding(0, horizontal: 10),
+            ),
+          ],
+        )
+      ],
+    ).padding(10);
   }
 }

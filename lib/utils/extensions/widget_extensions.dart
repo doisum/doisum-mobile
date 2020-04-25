@@ -2,12 +2,13 @@ import 'package:flutter/widgets.dart';
 
 extension WidgetExtensions on Widget {
   Widget padding(double defaultPadding,
-      {double top, double left, double right, double bottom}) {
+      {double top, double left, double right, double bottom,
+       double vertical, double horizontal}) {
     var padding = EdgeInsets.fromLTRB(
-      left ?? defaultPadding,
-      top ?? defaultPadding,
-      right ?? defaultPadding,
-      bottom ?? defaultPadding,
+      left ?? horizontal ?? defaultPadding,
+      top ?? vertical ?? defaultPadding,
+      right ?? horizontal ?? defaultPadding,
+      bottom ?? vertical ?? defaultPadding,
     );
     return Padding(
       padding: padding,
