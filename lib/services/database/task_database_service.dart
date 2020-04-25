@@ -1,14 +1,5 @@
+import 'package:healthy_routine_mobile/healthy_routine.dart';
 import 'package:flutter/foundation.dart';
-
-class Task {}
-
-enum TaskStatus {
-  pending,
-  doing,
-  done,
-  rejected,
-  skipped,
-}
 
 abstract class TaskDatabaseService {
   Future<void> addTask(Task task);
