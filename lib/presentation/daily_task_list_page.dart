@@ -26,13 +26,14 @@ class DailyTaskListPage extends StatelessWidget {
 
   SliverAppBar sliverAppBar() {
     return SliverAppBar(
-        pinned: true,
-        backgroundColor: GREEN,
-        expandedHeight: 150.0,
-        shape: ROUNDED_HEADER_SHAPE,
-        bottom: PreferredSize(
-          child: PageHeader(),
-          preferredSize: Size.square(60),
-        ));
+      pinned: true,
+      backgroundColor: GREEN,
+      expandedHeight: 150.0,
+      shape: ROUNDED_HEADER_SHAPE,
+      bottom: PreferredSize(
+        child: PageHeader(),
+        preferredSize: Size.square(80),
+      ),
+    );
   }
 }
