@@ -1,6 +1,4 @@
-# healthy_routine_mobile
-
-A new Flutter project.
+# Healthy Routine mobile
 
 ## Getting Started
 
@@ -11,6 +9,7 @@ $ flutter run
 ```
 
 ## Useful links:
+### Documentation
 
 - [Interative Widget catalog](https://flutter-widget.live/basics/introduction)
 - [Widgets of the week videos](https://www.youtube.com/playlist?list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG)
