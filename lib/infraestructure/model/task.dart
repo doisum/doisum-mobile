@@ -1,10 +1,9 @@
-import './task_status.dart';
-import './days_week.dart';
+import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class Task {
   final String name;
   final TaskStatus status;
-  final List<DaysWeek> recurrence;
+  final List<Weekday> recurrence;
   final DateTime startDate;
   final DateTime endDate;
 
