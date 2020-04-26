@@ -72,13 +72,7 @@ class CreateTaskPage extends StatelessWidget {
   List<Widget> form() {
     final titleStyle = BOLD.copyWith(fontSize: 24);
     return [
-      Text(
-        'Nome da atividade',
-        style: titleStyle,
-      ),
-      RoundedTextField(
-        placeholder: 'Meditar',
-      ).padding(16),
+      TaskNameField(),
       Text(
         'Sugestões',
         style: titleStyle,

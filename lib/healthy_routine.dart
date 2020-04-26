@@ -4,6 +4,7 @@ export 'package:healthy_routine_mobile/infraestructure/model/week_day.dart';
 export 'package:healthy_routine_mobile/presentation/components/bullet.dart';
 export 'package:healthy_routine_mobile/presentation/components/rounded_button.dart';
 export 'package:healthy_routine_mobile/presentation/components/task_card.dart';
+export 'package:healthy_routine_mobile/presentation/components/task_name_field.dart';
 export 'package:healthy_routine_mobile/presentation/components/timeline_stepper.dart';
 export 'package:healthy_routine_mobile/presentation/pages/create_task_page.dart';
 export 'package:healthy_routine_mobile/presentation/pages/daily_task_list_page.dart';

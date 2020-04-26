@@ -7,6 +7,8 @@ const DARK_GRAY = Color(0xff9d9da4);
 const LIGHT_GRAY = Color(0x999d9da4);
 const GREEN = Color(0xff7fad3f);
 const PURPLE = Color(0xff676daa);
+const DEEP_PURPLE = Color(0xff2D336A);
+const DEEP_PURPLE_75 = Color(0xBF2D336A);
 const ORANGE = Color(0xffF07254);
 
 const MOUNTBATTEN_PINK = Color(0xff9c7796);
