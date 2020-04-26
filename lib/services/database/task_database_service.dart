@@ -21,11 +21,18 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
 
     // Convert the List<Map<String, dynamic> into a List<Tasks>.
     return List.generate(maps.length, (i) {
+      List<String> weekDay = maps[i]['recurrence'].split(',');
+
+      List<Weekday> weekDayEnum = List.generate(weekDay.length, (idx) {
+        return Weekday.values.firstWhere((e) => e.toString() == weekDay[i]);
+      });
+
       return Task(
         id: maps[i]['id'],
         name: maps[i]['name'],
         status: TaskStatus.values
             .firstWhere((e) => e.toString() == maps[i]['status']),
+        recurrence: weekDayEnum,
         endDate: DateTime.parse(maps[i]['endDate']),
         startDate: DateTime.parse(maps[i]['startDate']),
       );

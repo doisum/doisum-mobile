@@ -19,10 +19,13 @@ class Task {
 
   // Convert a Note object into a Map object
   Map<String, dynamic> asMap() {
+    String weekDay = recurrence == null ? '' : recurrence.join(',').toString();
+
     return {
       'id': id,
       'name': name,
       'status': status.toString(),
+      'recurrence': weekDay,
       'startDate': startDate.toString(),
       'endDate': endDate.toString(),
     };
