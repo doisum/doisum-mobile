@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
-
 const BOLD = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,

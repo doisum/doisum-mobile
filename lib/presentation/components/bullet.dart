@@ -21,9 +21,7 @@ class Bullet extends StatefulWidget {
 class _BulletState extends State<Bullet> {
   var isPressed = false;
   Color get backgroundColor {
-    return isPressed
-      ? this.widget.color.withAlpha(90)
-      : widget.color;
+    return isPressed ? this.widget.color.withAlpha(90) : widget.color;
   }
 
   tapDown() {
@@ -41,14 +39,13 @@ class _BulletState extends State<Bullet> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onPressed,
-      onTapDown: (_) => tapDown(),
-      onTapUp: (_) => tapUp(),
-      onTapCancel: tapUp,
-      child: Chip(
-        backgroundColor: this.backgroundColor,
-        label: widget.child,
-      )
-    );
+        onTap: widget.onPressed,
+        onTapDown: (_) => tapDown(),
+        onTapUp: (_) => tapUp(),
+        onTapCancel: tapUp,
+        child: Chip(
+          backgroundColor: this.backgroundColor,
+          label: widget.child,
+        ));
   }
 }
