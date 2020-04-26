@@ -12,50 +12,13 @@ class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        TimelineStepper(),
+        TimelineStepper().padding(0, bottom: 10),
         SizedBox(width: 20),
         Expanded(child: TaskCardContent().padding(0, top: 20)),
       ],
-    );
-  }
-}
-
-class TimelineStepper extends StatelessWidget {
-  const TimelineStepper({Key key}) : super(key: key);
-
-  Widget circle() {
-    return Bullet(
-      color: GREEN,
-      child: Text(
-        '7h00',
-        style: TextStyle(
-          color: WHITE,
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-        ),
-      ),
-    );
-  }
-
-  Widget line() {
-    return Container(
-      // constraints: BoxConstraints.expand(),
-      color: DARK_GRAY,
-      width: 1,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        circle(),
-        Row(
-          children: [line()],
-        )
-      ],
-    );
+    ).padding(0, horizontal: 20);
   }
 }
 
@@ -65,10 +28,7 @@ class TaskCardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: GREEN.withAlpha(50),
-        borderRadius: BorderRadius.all(Radius.circular(9.5)),
-      ),
+      decoration: roundDecoration(color: GREEN.withAlpha(50), radius: 9.5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
