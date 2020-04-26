@@ -10,10 +10,7 @@ class TaskNameField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Atividade',
-          style: Theme.of(context).textTheme.headline,
-        ),
+        FormsTitleLabel('Atividade'),
         TextField(
           decoration: CLEAN_TEXT_FIELD.copyWith(
             hintStyle: Theme.of(context).textTheme.display1,
