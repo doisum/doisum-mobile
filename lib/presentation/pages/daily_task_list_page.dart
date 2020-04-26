@@ -11,25 +11,21 @@ class DailyTaskListPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           sliverAppBar(),
-          addTaskButton(context),
           taskSliverList(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => Routes.openCreateTaskPage(context),
+          tooltip: 'Nova atividade',
+          child: const Icon(Icons.add),
+          backgroundColor: PURPLE,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16.0))
+          ),
       ),
     );
   }
 
-  SliverToBoxAdapter addTaskButton(BuildContext context) {
-    return SliverToBoxAdapter(
-          child: Bullet(
-            onPressed: () => Routes.openCreateTaskPage(context),
-            color: PURPLE,
-            child: Text(
-              '+ Nova atividade',
-              style: BOLD.copyWith(color: WHITE),
-            ).padding(0, vertical: 4, horizontal: 10),
-          ).padding(0, vertical: 20),
-        );
-  }
 
   SliverList taskSliverList() {
     return SliverList(
