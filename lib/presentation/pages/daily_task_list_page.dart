@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
-import 'package:healthy_routine_mobile/presentation/components/page_header.dart';
 
 class DailyTaskListPage extends StatelessWidget {
   const DailyTaskListPage({Key key}) : super(key: key);
@@ -46,9 +45,10 @@ class DailyTaskListPage extends StatelessWidget {
   SliverAppBar sliverAppBar() {
     return SliverAppBar(
       pinned: true,
-      backgroundColor: ORANGE,
+      backgroundColor: PURPLE.withOpacity(0.9),
       expandedHeight: 150.0,
-      shape: ROUNDED_HEADER_SHAPE,
+      // shape: ROUNDED_HEADER_SHAPE,
+      // bottom: PreferredSize(child: PageHeader(), preferredSize: Size.fromHeight(90),),
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
           'Healthy Routine',

@@ -4,6 +4,7 @@ const BACKGROUND_GRAY = Color(0xffe6e4e9);
 
 const WHITE = Color(0xffffffff);
 const DARK_GRAY = Color(0xff9d9da4);
+const LIGHT_GRAY = Color(0x999d9da4);
 const GREEN = Color(0xff7fad3f);
 const PURPLE = Color(0xff676daa);
 const ORANGE = Color(0xffF07254);

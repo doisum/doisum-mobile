@@ -25,7 +25,7 @@ class PageHeader extends StatelessWidget {
               color: WHITE,
               child: Text(
                 '+ Nova atividade',
-                style: BOLD.copyWith(color: GREEN),
+                style: BOLD.copyWith(color: ORANGE),
               ).padding(0, horizontal: 10),
             ).padding(0, bottom: 10),
           ],

@@ -6,15 +6,12 @@ class TimelineStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Bullet(
-      color: GREEN,
-      child: Text(
-        '7h00',
-        style: TextStyle(
-          color: WHITE,
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-        ),
+    return Text(
+      '7h00',
+      style: TextStyle(
+        color: DARK_GRAY,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
       ),
     );
   }

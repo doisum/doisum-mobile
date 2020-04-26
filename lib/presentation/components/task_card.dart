@@ -12,8 +12,9 @@ class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        TimelineStepper(),
+        TimelineStepper().padding(0, bottom: 10),
         SizedBox(width: 20),
         Expanded(child: TaskCardContent().padding(0, top: 20)),
       ],
