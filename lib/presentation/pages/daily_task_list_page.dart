@@ -20,15 +20,15 @@ class DailyTaskListPage extends StatelessWidget {
 
   SliverToBoxAdapter addTaskButton(BuildContext context) {
     return SliverToBoxAdapter(
-          child: Bullet(
-            onPressed: () => Routes.openCreateTaskPage(context),
-            color: PURPLE,
-            child: Text(
-              '+ Nova atividade',
-              style: BOLD.copyWith(color: WHITE),
-            ).padding(0, vertical: 4, horizontal: 10),
-          ).padding(0, vertical: 20),
-        );
+      child: Bullet(
+        onPressed: () => Routes.openCreateTaskPage(context),
+        color: PURPLE,
+        child: Text(
+          '+ Nova atividade',
+          style: BOLD.copyWith(color: WHITE),
+        ).padding(0, vertical: 4, horizontal: 10),
+      ).padding(0, vertical: 20),
+    );
   }
 
   SliverList taskSliverList() {
