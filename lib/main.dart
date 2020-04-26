@@ -3,9 +3,7 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 void main() => runApp(Application());
 
-final appTheme = ThemeData(
-  backgroundColor: BACKGROUND_GRAY
-);
+final appTheme = ThemeData(backgroundColor: BACKGROUND_GRAY);
 
 class Application extends StatelessWidget {
   @override
