@@ -27,10 +27,7 @@ class TaskCardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: GREEN.withAlpha(50),
-        borderRadius: BorderRadius.all(Radius.circular(9.5)),
-      ),
+      decoration: roundDecoration(color: GREEN.withAlpha(50), radius: 9.5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

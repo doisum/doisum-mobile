@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class Bullet extends StatefulWidget {
   final Widget child;
@@ -18,6 +20,11 @@ class Bullet extends StatefulWidget {
 
 class _BulletState extends State<Bullet> {
   var isPressed = false;
+  Color get backgroundColor {
+    return isPressed
+      ? this.widget.color.withAlpha(90)
+      : widget.color;
+  }
 
   tapDown() {
     setState(() {
@@ -38,17 +45,10 @@ class _BulletState extends State<Bullet> {
       onTapDown: (_) => tapDown(),
       onTapUp: (_) => tapUp(),
       onTapCancel: tapUp,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-        decoration: BoxDecoration(
-          color:
-              isPressed ? this.widget.color.withAlpha(90) : this.widget.color,
-          borderRadius: BorderRadius.all(Radius.circular(1000)),
-        ),
-        child: Center(
-          child: this.widget.child,
-        ),
-      ),
+      child: Chip(
+        backgroundColor: this.backgroundColor,
+        label: widget.child,
+      )
     );
   }
 }

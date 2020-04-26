@@ -2,7 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class PageHeader extends StatelessWidget {
-  const PageHeader({Key key}) : super(key: key);
+  final VoidCallback onCreateTask;
+
+  const PageHeader({
+    Key key,
+    this.onCreateTask,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +19,9 @@ class PageHeader extends StatelessWidget {
           style: BOLD.copyWith(color: WHITE, fontSize: 40),
         ).padding(0, vertical: 10),
         Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Bullet(
-              onPressed: () { print("tap");},
+              onPressed: () => Routes.openCreateTaskPage(context),
               color: WHITE,
               child: Text(
                 '+ Nova atividade',
