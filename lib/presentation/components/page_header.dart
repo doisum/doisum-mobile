@@ -8,7 +8,9 @@ class PageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: GREEN),
-      child: SizedBox(height: 300,),
+      child: SizedBox(
+        height: 300,
+      ),
     );
   }
 }

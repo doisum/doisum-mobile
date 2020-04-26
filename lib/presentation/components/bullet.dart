@@ -4,11 +4,8 @@ class Bullet extends StatelessWidget {
   final Widget child;
   final Color color;
 
-  const Bullet({
-    Key key,
-    @required this.child,
-    @required this.color
-  }) : super(key: key);
+  const Bullet({Key key, @required this.child, @required this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
