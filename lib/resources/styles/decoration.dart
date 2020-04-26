@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 BoxDecoration roundDecoration(
@@ -9,3 +10,11 @@ BoxDecoration roundDecoration(
     ),
   );
 }
+
+const InputDecoration CLEAN_TEXT_FIELD = InputDecoration(
+  border: InputBorder.none,
+  focusedBorder: InputBorder.none,
+  enabledBorder: InputBorder.none,
+  errorBorder: InputBorder.none,
+  disabledBorder: InputBorder.none,
+);

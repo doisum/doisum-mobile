@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class Bullet extends StatefulWidget {
   final Widget child;
