@@ -32,6 +32,7 @@ class CreateTaskPage extends StatelessWidget {
       CategoryChooser(),
       RoundedCheckbox(isSelected: false),
       RoundedCheckbox(isSelected: true),
+      LabeledRoundCheckbox('S', isSelected: true,),
       RoundedButton(
         title: 'Criar atividade',
         onPressed: () {},

@@ -6,6 +6,7 @@ export 'package:healthy_routine_mobile/presentation/components/category_bullet.d
 export 'package:healthy_routine_mobile/presentation/components/create_task_page/category_chooser.dart';
 export 'package:healthy_routine_mobile/presentation/components/create_task_page/task_name_field.dart';
 export 'package:healthy_routine_mobile/presentation/components/forms_title_label.dart';
+export 'package:healthy_routine_mobile/presentation/components/labeled_round_checkbox.dart';
 export 'package:healthy_routine_mobile/presentation/components/rounded_button.dart';
 export 'package:healthy_routine_mobile/presentation/components/rounded_checkbox.dart';
 export 'package:healthy_routine_mobile/presentation/components/task_card.dart';

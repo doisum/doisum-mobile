@@ -6,8 +6,8 @@ class RoundedCheckbox extends StatelessWidget {
   final bool isSelected;
   const RoundedCheckbox({Key key, @required this.isSelected}) : super(key: key);
 
-  Color get borderColor => isSelected ? DEEP_PURPLE : LIGHT_GRAY;
-  Color get checkColor => isSelected ? DEEP_PURPLE : TRANSPARENT;
+  Color get borderColor => isSelected ? PURPLE : LIGHT_GRAY;
+  Color get checkColor => isSelected ? PURPLE : TRANSPARENT;
 
   @override
   Widget build(BuildContext context) {
