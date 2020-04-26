@@ -14,7 +14,8 @@ final appTheme = ThemeData(
   dividerColor: LIGHT_GRAY,
   textTheme: TextTheme(
     title: WHITE_BOLD.copyWith(fontSize: 24),
-    subtitle: BOLD
+    subtitle: BOLD,
+    button: WHITE_FONT.copyWith(fontSize: 16)
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: PURPLE,

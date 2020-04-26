@@ -109,19 +109,9 @@ class CreateTaskPage extends StatelessWidget {
         spacing: 10,
         children: taskSuggestions,
       ),
-      Bullet(
-        color: PURPLE,
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Text(
-                'Criar Atividade',
-                textAlign: TextAlign.center,
-                style: WHITE_FONT,
-              ).padding(12),
-            ),
-          ],
-        ),
+      RoundedButton(
+        title: 'Criar atividade',
+        onPressed: () {},
       ).padding(0, top: 30)
     ];
   }

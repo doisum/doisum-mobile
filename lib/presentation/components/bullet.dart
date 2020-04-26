@@ -21,7 +21,7 @@ class Bullet extends StatefulWidget {
 class _BulletState extends State<Bullet> {
   var isPressed = false;
   Color get backgroundColor {
-    return isPressed ? this.widget.color.withAlpha(90) : widget.color;
+    return isPressed ? this.widget.color.withOpacity(0.8) : widget.color;
   }
 
   tapDown() {
