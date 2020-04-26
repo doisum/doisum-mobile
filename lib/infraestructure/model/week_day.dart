@@ -7,4 +7,3 @@ enum Weekday {
   friday,
   saturday,
 }
-
