@@ -30,14 +30,12 @@ class CreateTaskPage extends StatelessWidget {
       TaskNameField(),
       Divider(),
       CategoryChooser(),
-      RoundedCheckbox(isSelected: false),
-      RoundedCheckbox(isSelected: true),
-      LabeledRoundCheckbox('S', isSelected: true,),
+      WeekdayChooser(),
       RoundedButton(
         title: 'Criar atividade',
         onPressed: () {},
       ).padding(0, top: 30)
-    ];
+    ].padding(0, top: 16);
   }
 }
 
