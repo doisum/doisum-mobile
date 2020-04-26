@@ -18,7 +18,7 @@ class Task {
   });
 
   // Convert a Note object into a Map object
-  Map<String, dynamic> taskMap() {
+  Map<String, dynamic> asMap() {
     return {
       'id': id,
       'name': name,
