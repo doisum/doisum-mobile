@@ -10,7 +10,7 @@ class DailyTaskListPage extends StatelessWidget {
       backgroundColor: PURPLE,
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverAppBar(),
+          sliverAppBar(context),
           roundCorners(context),
           taskSliverList(context),
         ],
@@ -19,9 +19,6 @@ class DailyTaskListPage extends StatelessWidget {
         onPressed: () => Routes.openCreateTaskPage(context),
         tooltip: 'Nova atividade',
         child: const Icon(Icons.add),
-        backgroundColor: PURPLE,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(16.0))),
       ),
     );
   }
@@ -30,11 +27,14 @@ class DailyTaskListPage extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16), topRight: Radius.circular(16))),
+          color: Theme.of(context).backgroundColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+          ),
+        ),
         child: Container(
-          padding: EdgeInsets.only(top: 16, left: 24, bottom: 0),
+          padding: EdgeInsets.only(top: 16, left: 24),
           child: Text(
             'Hoje',
             style: TextStyle(
@@ -63,20 +63,15 @@ class DailyTaskListPage extends StatelessWidget {
     );
   }
 
-  SliverAppBar sliverAppBar() {
+  SliverAppBar sliverAppBar(BuildContext context) {
     return SliverAppBar(
       pinned: true,
-      backgroundColor: PURPLE,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       expandedHeight: 150.0,
-      // shape: ROUNDED_HEADER_SHAPE,
-      // bottom: PreferredSize(child: PageHeader(), preferredSize: Size.fromHeight(90),),
+      textTheme: Theme.of(context).textTheme,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
-          'Healthy Routine',
-          style: BOLD.copyWith(
-            color: WHITE,
-            fontSize: 24,
-          ),
+          'Ficar Leve',
         ),
       ),
     );

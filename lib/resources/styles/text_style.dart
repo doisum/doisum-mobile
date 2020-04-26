@@ -6,6 +6,12 @@ const BOLD = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const WHITE_BOLD = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  color: WHITE,
+);
+
 const WHITE_FONT = TextStyle(
   fontSize: 16,
   color: WHITE,
