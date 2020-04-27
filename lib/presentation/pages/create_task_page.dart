@@ -25,15 +25,6 @@ class CreateTaskPage extends StatelessWidget {
     );
   }
 
-  Future _selectTime(BuildContext context) async {
-    TimeOfDay _currentTime = new TimeOfDay.now();
-    TimeOfDay selectedTime = await showTimePicker(
-        context: context,
-        initialTime: _currentTime,
-    );
-    if(selectedTime != null) print(selectedTime.toString());
-  }
-  
   List<Widget> form() {
     return [
       TaskNameField(onChanged: (s) => print(s)),
@@ -41,10 +32,10 @@ class CreateTaskPage extends StatelessWidget {
       CategoryChooser(),
       WeekdayChooser(),
       SizedBox(),
-      FieldPicker(icon: Icons.timer, label: 'Início', value: '10:00AM', onTap: _selectTime),
-      FieldPicker(icon: Icons.timer, label: 'Fim', value: '10:30AM', onTap: _selectTime),
-      FieldPicker(icon: Icons.repeat, label: 'Repetir semanalmente', value: 'Nunca', onTap: _selectTime),
-      FieldPicker(icon: Icons.notifications_none, label: 'Lembrar', value: '5 minutos antes', onTap: _selectTime),
+      FieldPicker(icon: Icons.timer, label: 'Início', value: '10:00AM', type: FieldPickerTypes.time, onTap: (time) => print(time)),
+      FieldPicker(icon: Icons.timer, label: 'Fim', value: '10:30AM', type: FieldPickerTypes.time, onTap: (time) => print(time)),
+      FieldPicker(icon: Icons.repeat, label: 'Repetir semanalmente', value: 'Nunca', type: FieldPickerTypes.repeat, onTap: (time) => print(time)),
+      FieldPicker(icon: Icons.notifications_none, label: 'Lembrar', value: '5 minutos antes', type: FieldPickerTypes.remember, onTap: (time) => print(time)),
       RoundedButton(
         title: 'Criar atividade',
         onPressed: () {},

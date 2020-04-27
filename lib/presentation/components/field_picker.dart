@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/resources/styles/colors.dart';
+import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 
 class FieldPicker extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
-  final Function(BuildContext) onTap;
+  final FieldPickerTypes type;
+  final Function(TimeOfDay) onTap;
 
   const FieldPicker({
     Key key,
@@ -15,13 +17,39 @@ class FieldPicker extends StatelessWidget {
     @required this.label,
     @required this.value,
     @required this.onTap,
+    @required this.type
   }) : super(key: key);
 
+  Future _selectTime(BuildContext context) async {
+    TimeOfDay _currentTime = new TimeOfDay.now();
+    TimeOfDay selectedTime = await showTimePicker(
+        context: context,
+        initialTime: _currentTime,
+    );
+    if(selectedTime != null) this.onTap(selectedTime);
+  }
+
+  void openSelect(BuildContext context) {
+    switch(this.type) {
+      case FieldPickerTypes.time: {
+        _selectTime(context);
+      }
+      break;
+      case FieldPickerTypes.repeat: {
+        print('repeat');
+      }
+      break;
+      case FieldPickerTypes.remember: {
+        print('remaider');
+      }
+      break;
+    }
+  }
 
     @override
     Widget build(BuildContext context) {
       return GestureDetector(
-          onTap: () => this.onTap(context),
+          onTap: () => openSelect(context),
           child: Row(
               children: [
                 Icon(
