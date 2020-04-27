@@ -3,58 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
-enum Category { exercise, mindfulness, learning, selfCare }
+class Category {
+  CategoryType type;
+  bool isSelected;
+
+  Category({
+    @required this.type,
+    this.isSelected = false,
+  });
+}
 
 class CategoryBullet extends StatelessWidget {
   final Category category;
-  const CategoryBullet({Key key, this.category}) : super(key: key);
+  final VoidCallback onPressed;
 
-  Color categoryColor() {
-    Color color;
-    switch (category) {
-      case Category.exercise:
-        color = CategoryColors.RED;
-        break;
-      case Category.mindfulness:
-        color = CategoryColors.BLUE;
-        break;
-      case Category.learning:
-        color = CategoryColors.YELLOW;
-        break;
-      case Category.selfCare:
-        color = CategoryColors.LIGHT_GREEN;
-        break;
-    }
-    return color;
-  }
-
-  String categoryTitle() {
-    String title;
-    switch (category) {
-      case Category.exercise:
-        title = 'Atividade física';
-        break;
-      case Category.mindfulness:
-        title = 'Saúde mental';
-        break;
-      case Category.learning:
-        title = 'Aprendizado';
-        break;
-      case Category.selfCare:
-        title = 'Saúde';
-        break;
-    }
-    return title;
-  }
+  const CategoryBullet({
+    Key key,
+    @required this.category,
+    @required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Bullet(
       child: Text(
-        categoryTitle(),
+        category.type.title(),
         style: Theme.of(context).textTheme.body1,
       ),
-      color: categoryColor().withOpacity(0.1),
+      color: category.type.color().withOpacity(0.1),
+      onPressed: this.onPressed,
+      isSelected: this.category.isSelected,
     );
   }
 }

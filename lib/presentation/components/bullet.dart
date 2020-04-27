@@ -5,12 +5,14 @@ class Bullet extends StatefulWidget {
   final Widget child;
   final Color color;
   final VoidCallback onPressed;
+  final bool isSelected;
 
   const Bullet({
     Key key,
     @required this.child,
     @required this.color,
     this.onPressed,
+    this.isSelected = false,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,7 @@ class Bullet extends StatefulWidget {
 class _BulletState extends State<Bullet> {
   var isPressed = false;
   Color get backgroundColor {
-    return isPressed ? this.widget.color.withOpacity(0.8) : widget.color;
+    return isPressed || widget.isSelected ? this.widget.color.withOpacity(0.8) : widget.color;
   }
 
   tapDown() {
