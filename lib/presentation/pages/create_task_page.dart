@@ -27,7 +27,6 @@ class CreateTaskPage extends StatelessWidget {
 
   Future _selectTime(BuildContext context) async {
     TimeOfDay _currentTime = new TimeOfDay.now();
-    print('eliias');
     TimeOfDay selectedTime = await showTimePicker(
         context: context,
         initialTime: _currentTime,
