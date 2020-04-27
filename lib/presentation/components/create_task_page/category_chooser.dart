@@ -27,6 +27,7 @@ class _CategoryChooserState extends State<CategoryChooser> {
       categories.forEach((c) => c.isSelected = false);
       selectedCategory.isSelected = true;
     });
+    widget.onChanged(selectedCategory);
   }
 
   List<CategoryBullet> categoryBullets() {
