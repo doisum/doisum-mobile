@@ -1,4 +1,4 @@
-enum FieldPickerTypes {
+enum FieldPickerType {
   time,
   repeat,
   remember,

@@ -8,15 +8,15 @@ class FieldPicker extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
-  final FieldPickerTypes type;
-  final Function(TimeOfDay) onTap;
+  final FieldPickerType type;
+  final Function(TimeOfDay) onChange;
 
   const FieldPicker({
     Key key,
     @required this.icon,
     @required this.label,
     @required this.value,
-    @required this.onTap,
+    @required this.onChange,
     @required this.type
   }) : super(key: key);
 
@@ -26,20 +26,20 @@ class FieldPicker extends StatelessWidget {
         context: context,
         initialTime: _currentTime,
     );
-    if(selectedTime != null) this.onTap(selectedTime);
+    if(selectedTime != null) this.onChange(selectedTime);
   }
 
   void openSelect(BuildContext context) {
     switch(this.type) {
-      case FieldPickerTypes.time: {
+      case FieldPickerType.time: {
         _selectTime(context);
       }
       break;
-      case FieldPickerTypes.repeat: {
+      case FieldPickerType.repeat: {
         print('repeat');
       }
       break;
-      case FieldPickerTypes.remember: {
+      case FieldPickerType.remember: {
         print('remaider');
       }
       break;
@@ -48,26 +48,35 @@ class FieldPicker extends StatelessWidget {
 
     @override
     Widget build(BuildContext context) {
-      return GestureDetector(
-          onTap: () => openSelect(context),
-          child: Row(
-              children: [
-                Icon(
-                    this.icon,
-                    size: 16,
-                    color: DEEP_PURPLE,
-                ),
-                SizedBox(width: 8),
-                Text(
-                    this.label,
-                    style: Theme.of(context).textTheme.headline,
-                ),
-                Expanded(child: SizedBox()),
-                Text(
-                    this.value,
-                ),
-              ],
+      return AnimatedContainer(
+          height: 17,
+          width: 500,
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child: Material(
+              color: TRANSPARENT,
+              child: InkWell(
+                  onTap: () => openSelect(context),
+                  child: Row(
+                      children: [
+                        Icon(
+                            this.icon,
+                            size: 16,
+                            color: DEEP_PURPLE,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                            this.label,
+                            style: Theme.of(context).textTheme.headline,
+                        ),
+                        Expanded(child: SizedBox()),
+                        Text(
+                            this.value,
+                        ),
+                      ],
+                  ),
+              ),
           ),
-          );
+      );
     }
 }
