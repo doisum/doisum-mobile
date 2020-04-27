@@ -39,7 +39,7 @@ class FieldPicker extends StatelessWidget {
         print('repeat');
       }
       break;
-      case FieldPickerType.remember: {
+      case FieldPickerType.reminder: {
         print('remaider');
       }
       break;

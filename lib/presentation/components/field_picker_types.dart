@@ -1,5 +1,5 @@
 enum FieldPickerType {
   time,
   repeat,
-  remember,
+  reminder,
 }
