@@ -2,13 +2,18 @@ import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TaskCard extends StatefulWidget {
-  TaskCard({Key key}) : super(key: key);
+  final Task task;
+
+  TaskCard(this.task, {Key key}) : super(key: key);
 
   @override
-  _TaskCardState createState() => _TaskCardState();
+  _TaskCardState createState() => _TaskCardState(task);
 }
 
 class _TaskCardState extends State<TaskCard> {
+   final Task task;
+  
+  _TaskCardState(this.task);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,14 +21,16 @@ class _TaskCardState extends State<TaskCard> {
       children: <Widget>[
         TimelineStepper().padding(0, bottom: 10),
         SizedBox(width: 20),
-        Expanded(child: TaskCardContent().padding(0, top: 20)),
+        Expanded(child: TaskCardContent(this.task).padding(0, top: 20)),
       ],
     ).padding(0, horizontal: 20);
   }
 }
 
 class TaskCardContent extends StatelessWidget {
-  const TaskCardContent({Key key}) : super(key: key);
+  final Task task;
+
+  const TaskCardContent(this.task, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +40,10 @@ class TaskCardContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Meditar',
+            this.task.name,
             style: BOLD,
           ),
-          Text('7h00 - 7h10'),
+          Text('${this.task.startDate.hour}h${this.task.startDate.minute} - ${this.task.endDate.hour}h${this.task.endDate.minute}'),
         ],
       ).padding(10),
     );

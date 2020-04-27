@@ -22,9 +22,21 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
     final List<Map<String, dynamic>> maps = await database.query(tableTasks);
 
     // Convert the List<Map<String, dynamic> into a List<Tasks>.
-    return List.generate(maps.length, (i) {
-      return Task.fromMap(maps[i]);
-    });
+    // return List.generate(maps.length, (i) {
+    //   return Task.fromMap(maps[i]);
+    // });
+
+    // Database Mock
+    List<Task> tasks = [
+      new Task(id: 1, name: 'Flexão', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.monday, Weekday.sunday, Weekday.saturday]),
+      new Task(id: 1, name: 'Meditar', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.monday]),
+      new Task(id: 1, name: 'Brincar com o Cachorro', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.saturday]),
+      new Task(id: 1, name: 'Ler 10 páginas de um livro', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.wednesday, Weekday.thursday]),
+      new Task(id: 1, name: 'Assistir a live - Bruno e Marrone', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.friday]),
+      new Task(id: 1, name: 'Ligar para a Ana', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.sunday, Weekday.saturday]),
+    ];
+
+    return tasks;
   }
 
   @override
