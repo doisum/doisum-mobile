@@ -15,10 +15,11 @@ class CategoryChooser extends StatefulWidget {
 
 class _CategoryChooserState extends State<CategoryChooser> {
   List<Category> categories = [
-    Category(type: CategoryType.mindfulness, isSelected: false),
-    Category(type: CategoryType.learning, isSelected: false),
-    Category(type: CategoryType.exercise, isSelected: false),
-    Category(type: CategoryType.selfCare, isSelected: false),
+    Category(type: CategoryType.mindfulness),
+    Category(type: CategoryType.learning),
+    Category(type: CategoryType.exercise),
+    Category(type: CategoryType.selfCare),
+    Category(type: CategoryType.work),
   ];
 
   void onChange(Category selectedCategory) {

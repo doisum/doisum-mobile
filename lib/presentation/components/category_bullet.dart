@@ -9,11 +9,11 @@ class Category {
 
   Category({
     @required this.type,
-    @required this.isSelected,
+    this.isSelected = false,
   });
 }
 
-enum CategoryType { exercise, mindfulness, learning, selfCare }
+enum CategoryType { exercise, mindfulness, learning, selfCare, work }
 
 class CategoryBullet extends StatelessWidget {
   final Category category;
@@ -40,6 +40,9 @@ class CategoryBullet extends StatelessWidget {
       case CategoryType.selfCare:
         color = CategoryColors.LIGHT_GREEN;
         break;
+      case CategoryType.work:
+        color = CategoryColors.PINK;
+        break;
     }
     return color;
   }
@@ -58,6 +61,9 @@ class CategoryBullet extends StatelessWidget {
         break;
       case CategoryType.selfCare:
         title = 'Saúde';
+        break;
+      case CategoryType.work:
+        title = 'Trabalho';
         break;
     }
     return title;
