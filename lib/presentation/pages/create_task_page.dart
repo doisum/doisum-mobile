@@ -30,7 +30,7 @@ class CreateTaskPage extends StatelessWidget {
       TaskNameField(onChanged: (s) => print(s)),
       Divider(),
       CategoryChooser(),
-      WeekdayChooser(),
+      WeekdayChooser(onChanged: (w, s) => print('Eu ${w.toString()} fui setado para ${s}')),
       SizedBox(),
       FieldPicker(icon: Icons.timer, label: 'Início', value: '10:00AM'),
       FieldPicker(icon: Icons.timer, label: 'Fim', value: '10:30AM'),
