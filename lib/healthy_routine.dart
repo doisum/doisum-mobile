@@ -27,3 +27,4 @@ export 'package:healthy_routine_mobile/services/database/task_database_service.d
 export 'package:healthy_routine_mobile/utils/extensions/widget_extensions.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_picker_types.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_switch.dart';

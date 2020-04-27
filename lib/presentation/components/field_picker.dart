@@ -7,17 +7,17 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 class FieldPicker extends StatelessWidget {
   final IconData icon;
   final String label;
-  final String value;
   final FieldPickerType type;
   final Function(TimeOfDay) onChange;
+  final Widget child;
 
   const FieldPicker({
     Key key,
     @required this.icon,
     @required this.label,
-    @required this.value,
     @required this.onChange,
-    @required this.type
+    @required this.type,
+    @required this.child,
   }) : super(key: key);
 
   Future _selectTime(BuildContext context) async {
@@ -70,9 +70,7 @@ class FieldPicker extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline,
                         ),
                         Expanded(child: SizedBox()),
-                        Text(
-                            this.value,
-                        ),
+                        this.child,
                       ],
                   ),
               ),
