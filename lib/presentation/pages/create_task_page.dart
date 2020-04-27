@@ -8,11 +8,10 @@ class CreateTaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ORANGE,
+      backgroundColor: TRANSPARENT,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: TRANSPARENT,
-        title: Text('Criar nova atividade'),
       ),
       body: RoundedBodyContent(
         child: SafeArea(
