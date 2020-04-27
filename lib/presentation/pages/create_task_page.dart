@@ -34,7 +34,7 @@ class CreateTaskPage extends StatelessWidget {
       SizedBox(),
       FieldPicker(icon: Icons.timer, label: 'Início', child: Text('10:00AM'), type: FieldPickerType.time, onChange: (time) => print(time)),
       FieldPicker(icon: Icons.timer, label: 'Fim', child: Text('10:30AM'), type: FieldPickerType.time, onChange: (time) => print(time)),
-      FieldPicker(icon: Icons.repeat, label: 'Repetir semanalmente', child: FieldSwitch(), type: FieldPickerType.repeat, onChange: (time) => print(time)),
+      FieldPicker(icon: Icons.repeat, label: 'Repetir semanalmente', child: FieldSwitch(isSwitched: false, onChanged: (t) => print(t)), type: FieldPickerType.repeat, onChange: (time) => print(time)),
       FieldPicker(icon: Icons.notifications_none, label: 'Lembrar', child: Text('5 minutos antes'), type: FieldPickerType.reminder, onChange: (time) => print(time)),
       RoundedButton(
         title: 'Criar atividade',
