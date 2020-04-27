@@ -1,6 +1,7 @@
 export 'package:healthy_routine_mobile/infraestructure/model/task.dart';
 export 'package:healthy_routine_mobile/infraestructure/model/task_status.dart';
 export 'package:healthy_routine_mobile/infraestructure/model/week_day.dart';
+export 'package:healthy_routine_mobile/infraestructure/model/week_day_helper.dart';
 export 'package:healthy_routine_mobile/presentation/components/bullet.dart';
 export 'package:healthy_routine_mobile/presentation/components/category_bullet.dart';
 export 'package:healthy_routine_mobile/presentation/components/create_task_page/category_chooser.dart';
