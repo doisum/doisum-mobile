@@ -1,15 +1,41 @@
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
-class CategoryChooser extends StatelessWidget {
-  const CategoryChooser({Key key}) : super(key: key);
+class CategoryChooser extends StatefulWidget {
+  final Function(Category) onChanged;
 
-  final taskSuggestions = const [
-    CategoryBullet(category: Category.mindfulness),
-    CategoryBullet(category: Category.learning),
-    CategoryBullet(category: Category.exercise),
-    CategoryBullet(category: Category.selfCare),
+  const CategoryChooser({
+    Key key,
+    this.onChanged,
+  }) : super(key: key);
+
+  @override
+  _CategoryChooserState createState() => _CategoryChooserState();
+}
+
+class _CategoryChooserState extends State<CategoryChooser> {
+  List<Category> categories = [
+    Category(type: CategoryType.mindfulness, isSelected: false),
+    Category(type: CategoryType.learning, isSelected: false),
+    Category(type: CategoryType.exercise, isSelected: false),
+    Category(type: CategoryType.selfCare, isSelected: false),
   ];
+
+  void onChange(Category selectedCategory) {
+    setState(() {
+      categories.forEach((c) => c.isSelected = false);
+      selectedCategory.isSelected = true;
+    });
+  }
+
+  List<CategoryBullet> categoryBullets() {
+    return categories.map((category) {
+      return CategoryBullet(
+        category: category,
+        onPressed: () => onChange(category),
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +46,7 @@ class CategoryChooser extends StatelessWidget {
         Wrap(
           alignment: WrapAlignment.start,
           spacing: 10,
-          children: taskSuggestions,
+          children: categoryBullets(),
         ),
       ],
     );

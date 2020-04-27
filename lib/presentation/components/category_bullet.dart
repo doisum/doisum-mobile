@@ -3,25 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
-enum Category { exercise, mindfulness, learning, selfCare }
+class Category {
+  CategoryType type;
+  bool isSelected;
+
+  Category({
+    @required this.type,
+    @required this.isSelected,
+  });
+}
+
+enum CategoryType { exercise, mindfulness, learning, selfCare }
 
 class CategoryBullet extends StatelessWidget {
   final Category category;
-  const CategoryBullet({Key key, this.category}) : super(key: key);
+  final VoidCallback onPressed;
+
+  const CategoryBullet({
+    Key key,
+    @required this.category,
+    @required this.onPressed,
+  }) : super(key: key);
 
   Color categoryColor() {
     Color color;
-    switch (category) {
-      case Category.exercise:
+    switch (category.type) {
+      case CategoryType.exercise:
         color = CategoryColors.RED;
         break;
-      case Category.mindfulness:
+      case CategoryType.mindfulness:
         color = CategoryColors.BLUE;
         break;
-      case Category.learning:
+      case CategoryType.learning:
         color = CategoryColors.YELLOW;
         break;
-      case Category.selfCare:
+      case CategoryType.selfCare:
         color = CategoryColors.LIGHT_GREEN;
         break;
     }
@@ -30,17 +46,17 @@ class CategoryBullet extends StatelessWidget {
 
   String categoryTitle() {
     String title;
-    switch (category) {
-      case Category.exercise:
+    switch (category.type) {
+      case CategoryType.exercise:
         title = 'Atividade física';
         break;
-      case Category.mindfulness:
+      case CategoryType.mindfulness:
         title = 'Saúde mental';
         break;
-      case Category.learning:
+      case CategoryType.learning:
         title = 'Aprendizado';
         break;
-      case Category.selfCare:
+      case CategoryType.selfCare:
         title = 'Saúde';
         break;
     }
@@ -55,6 +71,8 @@ class CategoryBullet extends StatelessWidget {
         style: Theme.of(context).textTheme.body1,
       ),
       color: categoryColor().withOpacity(0.1),
+      onPressed: this.onPressed,
+      isSelected: this.category.isSelected,
     );
   }
 }
