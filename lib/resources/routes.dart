@@ -10,6 +10,7 @@ class Routes {
 
   static Route _createRoute() {
     return PageRouteBuilder(
+      opaque: false,
       pageBuilder: (context, animation, secondaryAnimation) => CreateTaskPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
