@@ -27,7 +27,7 @@ class CreateTaskPage extends StatelessWidget {
 
   List<Widget> form() {
     return [
-      TaskNameField(),
+      TaskNameField(onChanged: (s) => print(s)),
       Divider(),
       CategoryChooser(),
       WeekdayChooser(),
