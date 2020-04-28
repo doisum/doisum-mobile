@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TaskCard extends StatefulWidget {
-  TaskCard({Key key}) : super(key: key);
+  final Task task;
+
+  TaskCard({Key key, @required this.task}) : super(key: key);
 
   @override
   _TaskCardState createState() => _TaskCardState();
@@ -22,35 +24,25 @@ class _TaskCardState extends State<TaskCard> {
       duration: Duration(seconds: 2),
       curve: Curves.easeIn,
       child: Material(
-              color: TRANSPARENT,
-              child: InkWell(
-                  onTap: toggleSelected,
-                  child: TaskCardContent(
-                          title: "Meditar",
-                          schedule: "8:00 AM - 9:00 AM",
-                          duration: "10 Minutes",
-                          color: Colors.green,
-                          isSelected: this.isSelected)
-                      .padding(0, top: 20)))
-          .padding(0, horizontal: 20),
+        color: TRANSPARENT,
+        child: InkWell(
+          onTap: toggleSelected,
+          child: TaskCardContent(
+            task: widget.task,
+            isSelected: this.isSelected,
+          ).padding(0, top: 20),
+        ),
+      ).padding(0, horizontal: 20),
     );
   }
 }
 
 class TaskCardContent extends StatelessWidget {
-  final String title;
-  final String schedule;
-  final String duration;
-  final Color color;
+  final Task task;
   final bool isSelected;
 
   const TaskCardContent(
-      {Key key,
-      @required this.title,
-      @required this.schedule,
-      @required this.duration,
-      @required this.color,
-      @required this.isSelected})
+      {Key key, @required this.task, @required this.isSelected})
       : super(key: key);
 
   @override
@@ -58,8 +50,12 @@ class TaskCardContent extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: new LinearGradient(
-            stops: [0.015, 0.015],
-            colors: [this.color, this.color.withOpacity(0.1)]),
+          stops: [0.015, 0.015],
+          colors: [
+            this.task.type.color(),
+            this.task.type.color().withOpacity(0.1)
+          ],
+        ),
         borderRadius: BorderRadius.all(
           Radius.circular(8),
         ),
@@ -70,11 +66,12 @@ class TaskCardContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    this.title,
-                    style: BOLD,
-                  ).padding(0, bottom: 6)),
+                alignment: Alignment.topLeft,
+                child: Text(
+                  this.task.name,
+                  style: BOLD,
+                ).padding(0, bottom: 6),
+              ),
               Align(
                 alignment: Alignment.topRight,
                 child: RoundedCheckbox(
@@ -83,8 +80,10 @@ class TaskCardContent extends StatelessWidget {
               )
             ],
           ).padding(0, bottom: 3),
-          TaskSchedule(schedule: this.schedule),
-          TaskDuration(duration: this.duration),
+          // TaskSchedule(schedule: this.task.startDate.toString()),
+          // TaskDuration(duration: this.task.endDate.toString()),
+          TaskSchedule(schedule: "7:00 AM - 8:00 AM"),
+          TaskDuration(duration: "10 Minutes"),
         ].padding(0, left: 13),
       ).padding(13),
     );

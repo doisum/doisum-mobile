@@ -41,6 +41,57 @@ class DailyTaskListPage extends StatelessWidget {
   }
 
   SliverList taskSliverList(BuildContext context) {
+    List<Task> list = [
+      Task(
+        name: "Pensar na Vida",
+        status: TaskStatus.pending,
+        type: CategoryType.mindfulness,
+        recurrence: [Weekday.monday],
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
+      Task(
+        name: "Academia",
+        status: TaskStatus.pending,
+        type: CategoryType.exercise,
+        recurrence: [Weekday.monday],
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
+      Task(
+        name: "Estudar GIT",
+        status: TaskStatus.pending,
+        type: CategoryType.learning,
+        recurrence: [Weekday.monday],
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
+      Task(
+        name: "Almoço",
+        status: TaskStatus.pending,
+        type: CategoryType.selfCare,
+        recurrence: [Weekday.monday],
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
+      Task(
+        name: "Estudar Flutter",
+        status: TaskStatus.pending,
+        type: CategoryType.learning,
+        recurrence: [Weekday.monday],
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
+      Task(
+        name: "Meditar",
+        status: TaskStatus.pending,
+        type: CategoryType.mindfulness,
+        recurrence: [Weekday.monday],
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
+    ];
+
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -48,10 +99,10 @@ class DailyTaskListPage extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).backgroundColor,
             ),
-            child: TaskCard(),
+            child: TaskCard(task: list[index]),
           );
         },
-        childCount: 10,
+        childCount: list.length,
       ),
     );
   }

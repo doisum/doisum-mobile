@@ -4,6 +4,7 @@ class Task {
   final int id;
   final String name;
   final TaskStatus status;
+  final CategoryType type;
   final List<Weekday> recurrence;
   final DateTime startDate;
   final DateTime endDate;
@@ -12,6 +13,7 @@ class Task {
     this.id,
     this.name,
     this.status,
+    this.type,
     this.recurrence,
     this.startDate,
     this.endDate,
