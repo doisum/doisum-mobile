@@ -18,16 +18,22 @@ class _TaskCardState extends State<TaskCard> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: toggleSelected,
-      child: TaskCardContent(
-              title: "Meditar",
-              schedule: "8:00 AM - 9:00 AM",
-              duration: "10 Minutes",
-              color: Colors.green,
-              isSelected: this.isSelected)
-          .padding(0, top: 20),
-    ).padding(0, horizontal: 20);
+    return AnimatedContainer(
+      duration: Duration(seconds: 2),
+      curve: Curves.easeIn,
+      child: Material(
+              color: TRANSPARENT,
+              child: InkWell(
+                  onTap: toggleSelected,
+                  child: TaskCardContent(
+                          title: "Meditar",
+                          schedule: "8:00 AM - 9:00 AM",
+                          duration: "10 Minutes",
+                          color: Colors.green,
+                          isSelected: this.isSelected)
+                      .padding(0, top: 20)))
+          .padding(0, horizontal: 20),
+    );
   }
 }
 
@@ -58,7 +64,6 @@ class TaskCardContent extends StatelessWidget {
           Radius.circular(8),
         ),
       ),
-      // decoration: roundDecoration(color: GREEN.withAlpha(50), radius: 9.5),
       child: Column(
         children: <Widget>[
           Row(
