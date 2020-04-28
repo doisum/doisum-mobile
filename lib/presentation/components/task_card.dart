@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TaskCard extends StatefulWidget {
@@ -9,36 +10,78 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
+  bool isSelected = false;
+
+  void toggleSelected() {
+    setState(() => isSelected = !isSelected);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: <Widget>[
-        TimelineStepper().padding(0, bottom: 10),
-        SizedBox(width: 20),
-        Expanded(child: TaskCardContent().padding(0, top: 20)),
-      ],
+    return GestureDetector(
+      onTap: toggleSelected,
+      child: TaskCardContent(
+              title: "Meditar",
+              schedule: "8:00 AM - 9:00 AM",
+              duration: "10 Minutes",
+              color: Colors.green,
+              isSelected: this.isSelected)
+          .padding(0, top: 20),
     ).padding(0, horizontal: 20);
   }
 }
 
 class TaskCardContent extends StatelessWidget {
-  const TaskCardContent({Key key}) : super(key: key);
+  final String title;
+  final String schedule;
+  final String duration;
+  final Color color;
+  final bool isSelected;
+
+  const TaskCardContent(
+      {Key key,
+      @required this.title,
+      @required this.schedule,
+      @required this.duration,
+      @required this.color,
+      @required this.isSelected})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: roundDecoration(color: LIGHT_GRAY.withAlpha(50), radius: 9.5),
+      decoration: BoxDecoration(
+        gradient: new LinearGradient(
+            stops: [0.015, 0.015],
+            colors: [this.color, this.color.withOpacity(0.1)]),
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
+      // decoration: roundDecoration(color: GREEN.withAlpha(50), radius: 9.5),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Meditar',
-            style: BOLD,
-          ),
-          Text('7h00 - 7h10'),
-        ],
-      ).padding(10),
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    this.title,
+                    style: BOLD,
+                  ).padding(0, bottom: 6)),
+              Align(
+                alignment: Alignment.topRight,
+                child: RoundedCheckbox(
+                  isSelected: this.isSelected,
+                ),
+              )
+            ],
+          ).padding(0, bottom: 3),
+          TaskSchedule(schedule: this.schedule),
+          TaskDuration(duration: this.duration),
+        ].padding(0, left: 13),
+      ).padding(13),
     );
   }
 }
