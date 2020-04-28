@@ -30,9 +30,9 @@ class _TaskCardState extends State<TaskCard> {
           child: TaskCardContent(
             task: widget.task,
             isSelected: this.isSelected,
-          ).padding(0, top: 20),
+          ),
         ),
-      ).padding(0, horizontal: 20),
+      ),
     );
   }
 }

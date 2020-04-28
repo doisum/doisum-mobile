@@ -7,19 +7,26 @@ class DailyTaskListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PURPLE,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          sliverAppBar(context),
-          roundCorners(context),
-          taskSliverList(context),
-        ],
+      body: TwoColorBackground(
+        child: content(context),
+        startColor: PURPLE,
+        endColor: Theme.of(context).backgroundColor,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Routes.openCreateTaskPage(context),
         tooltip: 'Nova atividade',
         child: const Icon(Icons.add),
       ),
+    );
+  }
+
+  CustomScrollView content(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        sliverAppBar(context),
+        roundCorners(context),
+        taskSliverList(context),
+      ],
     );
   }
 
@@ -99,7 +106,9 @@ class DailyTaskListPage extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).backgroundColor,
             ),
-            child: TaskCard(task: list[index]),
+            child: TaskCard(
+              task: list[index],
+            ).padding(0, horizontal: 20, vertical: 10),
           );
         },
         childCount: list.length,
