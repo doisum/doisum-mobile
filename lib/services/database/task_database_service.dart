@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TaskDatabaseService extends AbstractTaskDatabaseService {

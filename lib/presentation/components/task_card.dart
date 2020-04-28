@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
+import 'package:intl/intl.dart';
 
 class TaskCard extends StatefulWidget {
   final Task task;
@@ -19,7 +20,7 @@ class _TaskCardState extends State<TaskCard> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        TimelineStepper().padding(0, bottom: 10),
+        TimelineStepper(this.task).padding(0, bottom: 10),
         SizedBox(width: 20),
         Expanded(child: TaskCardContent(this.task).padding(0, top: 20)),
       ],
@@ -43,7 +44,7 @@ class TaskCardContent extends StatelessWidget {
             this.task.name,
             style: BOLD,
           ),
-          Text('${this.task.startDate.hour}h${this.task.startDate.minute} - ${this.task.endDate.hour}h${this.task.endDate.minute}'),
+          Text('${new DateFormat('h:mm a').format(task.startDate)} - ${new DateFormat('h:mm a').format(task.endDate)}'),
         ],
       ).padding(10),
     );
