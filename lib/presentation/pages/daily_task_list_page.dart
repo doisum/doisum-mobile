@@ -12,7 +12,12 @@ class DailyTaskListPage extends StatelessWidget {
         slivers: <Widget>[
           sliverAppBar(context),
           roundCorners(context),
-          taskSliverList(context),
+          FutureBuilder(
+            future: new TaskDatabaseService().listTasks(),
+            builder: (context, projectSnap) {
+                return taskSliverList(context, projectSnap.data);      
+            },
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -48,17 +53,7 @@ class DailyTaskListPage extends StatelessWidget {
     );
   }
 
-  SliverList taskSliverList(BuildContext context) {
-
-    List<Task> tasks = [
-      new Task(id: 1, name: 'Flexão', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.monday, Weekday.sunday, Weekday.saturday]),
-      new Task(id: 1, name: 'Meditar', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.monday]),
-      new Task(id: 1, name: 'Brincar com o Cachorro', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.saturday]),
-      new Task(id: 1, name: 'Ler 10 páginas de um livro', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.wednesday, Weekday.thursday]),
-      new Task(id: 1, name: 'Jogar Vídeo game', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.friday]),
-      new Task(id: 1, name: 'Ligar para a Ana', startDate: DateTime.now(), endDate: DateTime.now(), recurrence: [Weekday.sunday, Weekday.saturday]),
-    ];
-
+  SliverList taskSliverList(BuildContext context, List<dynamic> tasks) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -68,7 +63,7 @@ class DailyTaskListPage extends StatelessWidget {
               ),
               child: TaskCard(tasks.elementAt(index)));
         },
-        childCount: tasks.length,
+        childCount: tasks != null ? tasks.length : 0,
       ),
     );
   }

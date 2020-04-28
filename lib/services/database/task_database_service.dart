@@ -4,21 +4,25 @@ import 'package:sqflite/sqflite.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TaskDatabaseService extends AbstractTaskDatabaseService {
-  final Database database;
+  // final Database database;
   final String tableTasks = 'tasks';
 
-  TaskDatabaseService({
-    this.database,
-  });
+  // TaskDatabaseService({
+  //   this.database,
+  // });
 
   @override
   Future<int> addTask(Task task) async {
+    var database = await DatabaseProvider.database();
+
     int created = await database.insert(tableTasks, task.asMap());
     return created;
   }
 
   @override
   Future<List<Task>> listTasks() async {
+    var database = await DatabaseProvider.database();
+
     final List<Map<String, dynamic>> maps = await database.query(tableTasks);
 
     // Convert the List<Map<String, dynamic> into a List<Tasks>.
@@ -41,23 +45,27 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
 
   @override
   Future<void> deleteTask(int id) async {
+    var database = await DatabaseProvider.database();
     await database.delete(tableTasks, where: "id = ?", whereArgs: [id]);
   }
 
   @override
   Future<void> markTaskAs(TaskStatus status, int taskId) async {
+    var database = await DatabaseProvider.database();
     await database.rawUpdate('UPDATE tasks SET status = ? WHERE id = ?',
         [status.toString(), taskId.toString()]);
   }
 
   @override
   Future<void> editTask({@required int id, @required Task updatedTask}) async {
+    var database = await DatabaseProvider.database();
     await database.update(tableTasks, updatedTask.asMap(),
         where: "id = ?", whereArgs: [id]);
   }
 
   @override
   Future<Task> findTaskById(@required int id) async {
+    var database = await DatabaseProvider.database();
     List<Map> maps = await database.query(tableTasks,
         columns: ['id', 'name', 'status', 'recurrence', 'startDate', 'endDate'],
         where: 'id = ?',
