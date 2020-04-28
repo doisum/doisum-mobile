@@ -34,15 +34,7 @@ class DailyTaskListPage extends StatelessWidget {
           ),
         ),
         child: Container(
-          padding: EdgeInsets.only(top: 16, left: 24),
-          child: Text(
-            'Hoje',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-              color: PURPLE,
-            ),
-          ),
+          padding: EdgeInsets.only(top: 16),
         ),
       ),
     );
@@ -53,10 +45,11 @@ class DailyTaskListPage extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
-              ),
-              child: TaskCard());
+            decoration: BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+            ),
+            child: TaskCard(),
+          );
         },
         childCount: 10,
       ),
@@ -73,6 +66,19 @@ class DailyTaskListPage extends StatelessWidget {
         title: Text(
           'Ficar Leve',
         ),
+        titlePadding: EdgeInsets.all(35),
+      ),
+      bottom: PreferredSize(
+        child: Column(
+          children: [
+            Text(
+              'segunda-feira',
+              style: Theme.of(context).textTheme.caption,
+            ),
+            SizedBox(height: 16),
+          ],
+        ),
+        preferredSize: Size.fromHeight(20),
       ),
     );
   }
