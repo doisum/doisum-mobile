@@ -1,11 +1,16 @@
+export 'package:healthy_routine_mobile/infraestructure/model/category_type.dart';
 export 'package:healthy_routine_mobile/infraestructure/model/task.dart';
 export 'package:healthy_routine_mobile/infraestructure/model/task_status.dart';
 export 'package:healthy_routine_mobile/infraestructure/model/week_day.dart';
+export 'package:healthy_routine_mobile/infraestructure/model/week_day_helper.dart';
 export 'package:healthy_routine_mobile/presentation/components/bullet.dart';
 export 'package:healthy_routine_mobile/presentation/components/category_bullet.dart';
 export 'package:healthy_routine_mobile/presentation/components/create_task_page/category_chooser.dart';
 export 'package:healthy_routine_mobile/presentation/components/create_task_page/task_name_field.dart';
 export 'package:healthy_routine_mobile/presentation/components/create_task_page/weekday_chooser.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker_types.dart';
 export 'package:healthy_routine_mobile/presentation/components/forms_title_label.dart';
 export 'package:healthy_routine_mobile/presentation/components/labeled_round_checkbox.dart';
 export 'package:healthy_routine_mobile/presentation/components/rounded_button.dart';
@@ -23,4 +28,8 @@ export 'package:healthy_routine_mobile/services/database/abstract_task_database_
 export 'package:healthy_routine_mobile/services/database/database_provider.dart';
 export 'package:healthy_routine_mobile/services/database/task_database_service.dart';
 export 'package:healthy_routine_mobile/services/database/task_database_service.dart';
+export 'package:healthy_routine_mobile/utils/extensions/widget_extensions.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker_types.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_switch.dart';
 export 'package:healthy_routine_mobile/utils/extensions/widget_extensions.dart';
