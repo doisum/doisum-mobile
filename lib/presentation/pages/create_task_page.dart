@@ -37,7 +37,7 @@ class CreateTaskPage extends StatelessWidget {
       FieldPicker(icon: Icons.notifications_none, label: 'Lembrar', child: Text('5 minutos antes'), type: FieldPickerType.reminder, onChange: (time) => print(time)),
       RoundedButton(
         title: 'Criar atividade',
-          onPressed: () => CreateTaskPresenter.saveTask(),
+        onPressed: () => CreateTaskPresenter.saveTask(),
       ).padding(0, top: 30)
     ].padding(0, top: 16);
   }

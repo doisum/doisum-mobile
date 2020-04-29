@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
@@ -12,8 +13,8 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
   });
 
   @override
-  Future<int> addTask(Task task) async {
-    int created = await database.insert(tableTasks, task.asMap());
+  Future<int> addTask(Map<String, dynamic> task) async {
+    int created = await database.insert(tableTasks, task);
     return created;
   }
 
@@ -39,8 +40,8 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
   }
 
   @override
-  Future<void> editTask({@required int id, @required Task updatedTask}) async {
-    await database.update(tableTasks, updatedTask.asMap(),
+  Future<void> editTask({@required int id, @required Map<String, dynamic> updatedTask}) async {
+    await database.update(tableTasks, updatedTask,
         where: "id = ?", whereArgs: [id]);
   }
 

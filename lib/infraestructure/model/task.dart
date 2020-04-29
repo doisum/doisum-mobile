@@ -1,5 +1,6 @@
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Task {
   final int id;
@@ -21,7 +22,7 @@ class Task {
   });
 
   // Convert a Note object into a Map object
-  Map<String, dynamic> asMap() {
+  Map<String, dynamic> asMap(BuildContext context) {
     String weekDay = recurrence == null ? '' : recurrence.join(',').toString();
 
     return {
@@ -29,8 +30,8 @@ class Task {
       'name': name,
       'status': status.toString(),
       'recurrence': weekDay,
-      'startTime': startTime.toString(),
-      'endTime': endTime.toString(),
+      'startTime': startTime.format(context),
+      'endTime': endTime.format(context),
     };
   }
 
