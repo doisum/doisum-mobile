@@ -5,10 +5,8 @@ class CreateTaskPresenter {
   static String taskName;
   static Category category;
   static List<Weekday> listWeekDay = List();
-  static int startHour;
-  static int startMinute;
-  static int endHour;
-  static int endMinute;
+  static TimeOfDay startTime;
+  static TimeOfDay endTime;
   static bool repeat;
 
   static void selectListWeekDay(Weekday day, bool selected) {
@@ -22,10 +20,8 @@ class CreateTaskPresenter {
         name: taskName,
         status: TaskStatus.pending,
         recurrence: listWeekDay,
-        startHour: startHour,
-        startMinute: startMinute,
-        endHour: endHour,
-        endMinute: endMinute,
+        startTime: startTime,
+        endTime: endTime,
     );
     print(t);
     print('saving task in database');

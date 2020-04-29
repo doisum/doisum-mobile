@@ -1,4 +1,5 @@
 import 'package:healthy_routine_mobile/healthy_routine.dart';
+import 'package:flutter/material.dart';
 
 class Task {
   final int id;
@@ -6,10 +7,8 @@ class Task {
   final TaskStatus status;
   final CategoryType type;
   final List<Weekday> recurrence;
-  final int startHour;
-  final int startMinute;
-  final int endHour;
-  final int endMinute;
+  final TimeOfDay startTime;
+  final TimeOfDay endTime;
 
   Task({
     this.id,
@@ -17,10 +16,8 @@ class Task {
     this.status,
     this.type,
     this.recurrence,
-    this.startHour,
-    this.startMinute,
-    this.endHour,
-    this.endMinute,
+    this.startTime,
+    this.endTime,
   });
 
   // Convert a Note object into a Map object
@@ -32,10 +29,8 @@ class Task {
       'name': name,
       'status': status.toString(),
       'recurrence': weekDay,
-      'startHour': startHour.toString(),
-      'startMinute': startMinute.toString(),
-      'endHour': endHour.toString(),
-      'endMinute': endMinute.toString(),
+      'startTime': startTime.toString(),
+      'endTime': endTime.toString(),
     };
   }
 
@@ -47,16 +42,20 @@ class Task {
       return Weekday.values.firstWhere((e) => e.toString() == weekDay[idx]);
     });
 
+    TimeOfDay parseTimeOfDay(String s) {
+      final time = s.split(":");
+      TimeOfDay timeOfDay = TimeOfDay(hour:int.parse(time[0]),minute: int.parse(time[1]));
+      return timeOfDay;
+    }
+
     return Task(
       id: taskMap['id'],
       name: taskMap['name'],
       status: TaskStatus.values
           .firstWhere((e) => e.toString() == taskMap['status']),
       recurrence: weekDayEnum,
-      startHour: taskMap['startHour'],
-      startMinute: taskMap['startMinute'],
-      endHour: taskMap['endHour'],
-      endMinute: taskMap['endMinute'],
+      startTime: parseTimeOfDay(taskMap['startTime']),
+      endTime: parseTimeOfDay(taskMap['endTime']),
     );
   }
 }
