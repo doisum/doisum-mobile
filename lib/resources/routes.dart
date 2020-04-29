@@ -8,11 +8,11 @@ class Routes {
     Navigator.of(c).pop();
   }
 
-  static openCreateTaskPage(BuildContext c, var database) {
+  static openCreateTaskPage(BuildContext c, TaskDatabaseService database) {
     Navigator.of(c).push(_createRoute(database));
   }
 
-  static Route _createRoute(var database) {
+  static Route _createRoute(TaskDatabaseService database) {
     return PageRouteBuilder(
       opaque: false,
       pageBuilder: (context, animation, secondaryAnimation) => CreateTaskPage(database: database),

@@ -13,7 +13,7 @@ extension WeekdayExtension on Weekday {
     String value;
     switch (this) {
       case Weekday.sunday:
-        value = 'friday';
+        value = 'sunday';
         break;
       case Weekday.monday:
         value = 'monday';
