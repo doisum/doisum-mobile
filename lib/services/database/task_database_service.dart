@@ -1,16 +1,17 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
+import 'package:sqflite/sqflite.dart';
 
 class TaskDatabaseService extends AbstractTaskDatabaseService {
   final Database database;
   final String tableTasks = 'tasks';
 
-  TaskDatabaseService({
-    this.database,
-  });
+   TaskDatabaseService({
+     @required this.database,
+   });
 
   @override
   Future<int> addTask(Map<String, dynamic> task) async {

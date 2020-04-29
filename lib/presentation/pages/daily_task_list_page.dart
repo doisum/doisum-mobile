@@ -7,6 +7,12 @@ class DailyTaskListPage extends StatelessWidget {
 
   const DailyTaskListPage({Key key, this.notificationService}) : super(key: key);
 
+  Future<List<Task>> listTasks() async {
+    var database = await DatabaseProvider.database();
+
+    return TaskDatabaseService(database: database).listTasks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +21,12 @@ class DailyTaskListPage extends StatelessWidget {
         slivers: <Widget>[
           sliverAppBar(context),
           roundCorners(context),
-          taskSliverList(context),
+          FutureBuilder(
+            future: listTasks(),
+            builder: (context, projectSnap) {
+                return taskSliverList(context, projectSnap.data);      
+            },
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -43,69 +54,17 @@ class DailyTaskListPage extends StatelessWidget {
     );
   }
 
-  SliverList taskSliverList(BuildContext context) {
-    List<Task> list = [
-      Task(
-        name: "Pensar na Vida",
-        status: TaskStatus.pending,
-        type: CategoryType.mindfulness,
-        recurrence: [Weekday.monday],
-        startTime: TimeOfDay(hour: 12, minute: 00),
-        endTime: TimeOfDay(hour: 17, minute: 00),
-      ),
-      Task(
-        name: "Academia",
-        status: TaskStatus.pending,
-        type: CategoryType.exercise,
-        recurrence: [Weekday.monday],
-        startTime: TimeOfDay(hour: 12, minute: 00),
-        endTime: TimeOfDay(hour: 17, minute: 00),
-      ),
-      Task(
-        name: "Estudar GIT",
-        status: TaskStatus.pending,
-        type: CategoryType.learning,
-        recurrence: [Weekday.monday],
-        startTime: TimeOfDay(hour: 12, minute: 00),
-        endTime: TimeOfDay(hour: 17, minute: 00),
-      ),
-      Task(
-        name: "Almoço",
-        status: TaskStatus.pending,
-        type: CategoryType.selfCare,
-        recurrence: [Weekday.monday],
-        startTime: TimeOfDay(hour: 12, minute: 00),
-        endTime: TimeOfDay(hour: 17, minute: 00),
-      ),
-      Task(
-        name: "Estudar Flutter",
-        status: TaskStatus.pending,
-        type: CategoryType.learning,
-        recurrence: [Weekday.monday],
-        startTime: TimeOfDay(hour: 12, minute: 00),
-        endTime: TimeOfDay(hour: 17, minute: 00),
-      ),
-      Task(
-        name: "Meditar",
-        status: TaskStatus.pending,
-        type: CategoryType.mindfulness,
-        recurrence: [Weekday.monday],
-        startTime: TimeOfDay(hour: 12, minute: 00),
-        endTime: TimeOfDay(hour: 17, minute: 00),
-      ),
-    ];
-
+  SliverList taskSliverList(BuildContext context, List<dynamic> tasks) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-            ),
-            child: TaskCard(task: list[index]),
-          );
+              decoration: BoxDecoration(
+                color: Theme.of(context).backgroundColor,
+              ),
+              child: TaskCard(tasks.elementAt(index)));
         },
-        childCount: list.length,
+        childCount: tasks?.length ?? 0,
       ),
     );
   }

@@ -5,14 +5,17 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 class TaskCard extends StatefulWidget {
   final Task task;
 
-  TaskCard({Key key, @required this.task}) : super(key: key);
+  TaskCard(this.task, {Key key}) : super(key: key);
 
   @override
-  _TaskCardState createState() => _TaskCardState();
+  _TaskCardState createState() => _TaskCardState(task);
 }
 
 class _TaskCardState extends State<TaskCard> {
   bool isSelected = false;
+  final Task task;
+
+  _TaskCardState(this.task);
 
   void toggleSelected() {
     setState(() => isSelected = !isSelected);

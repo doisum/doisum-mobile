@@ -40,7 +40,7 @@ class Task {
     List<String> weekDay = taskMap['recurrence'].split(',');
 
     List<Weekday> weekDayEnum = List.generate(weekDay.length, (idx) {
-      return Weekday.values.firstWhere((e) => e.toString() == weekDay[idx]);
+      return Weekday.values.firstWhere((e) => e.value() == weekDay[idx]);
     });
 
     TimeOfDay parseTimeOfDay(String s) {
@@ -53,7 +53,7 @@ class Task {
       id: taskMap['id'],
       name: taskMap['name'],
       status: TaskStatus.values
-          .firstWhere((e) => e.toString() == taskMap['status']),
+          .firstWhere((e) => e.value() == taskMap['status']),
       recurrence: weekDayEnum,
       startTime: parseTimeOfDay(taskMap['startTime']),
       endTime: parseTimeOfDay(taskMap['endTime']),
