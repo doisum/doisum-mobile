@@ -1,8 +1,11 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class DailyTaskListPage extends StatelessWidget {
-  const DailyTaskListPage({Key key}) : super(key: key);
+  final NotificationService notificationService;
+
+  const DailyTaskListPage({Key key, this.notificationService}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
