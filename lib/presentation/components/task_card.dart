@@ -80,9 +80,8 @@ class TaskCardContent extends StatelessWidget {
               )
             ],
           ).padding(0, bottom: 3),
-          // TaskSchedule(schedule: this.task.startDate.toString()),
-          // TaskDuration(duration: this.task.endDate.toString()),
-          TaskSchedule(schedule: "7:00 AM - 8:00 AM"),
+          TaskSchedule(schedule: this.task.startTime.format(context)),
+          // TaskDuration(duration: this.task.endTime.toString()),
           TaskDuration(duration: "10 Minutes"),
         ].padding(0, left: 13),
       ).padding(13),
