@@ -4,14 +4,14 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 class Routes {
   static String createTask = '/create_task';
 
-  static openCreateTaskPage(BuildContext c) {
-    Navigator.of(c).push(_createRoute());
+  static openCreateTaskPage(BuildContext c, var database) {
+    Navigator.of(c).push(_createRoute(database));
   }
 
-  static Route _createRoute() {
+  static Route _createRoute(var database) {
     return PageRouteBuilder(
       opaque: false,
-      pageBuilder: (context, animation, secondaryAnimation) => CreateTaskPage(),
+      pageBuilder: (context, animation, secondaryAnimation) => CreateTaskPage(database: database),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

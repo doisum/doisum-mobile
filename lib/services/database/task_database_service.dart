@@ -16,6 +16,7 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
   @override
   Future<int> addTask(Map<String, dynamic> task) async {
     int created = await database.insert(tableTasks, task);
+    print(created);
     return created;
   }
 

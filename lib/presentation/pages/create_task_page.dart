@@ -3,7 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class CreateTaskPage extends StatelessWidget {
-  const CreateTaskPage({Key key}) : super(key: key);
+  var database;
+
+  CreateTaskPage({Key key, this.database}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +19,14 @@ class CreateTaskPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: form(),
+            children: form(context),
           ).padding(16),
         ),
       ),
     );
   }
 
-  List<Widget> form() {
+  List<Widget> form(BuildContext context) {
     return [
       TaskNameField(onChanged: (name) => CreateTaskPresenter.taskName = name),
       Divider(),
@@ -37,7 +39,7 @@ class CreateTaskPage extends StatelessWidget {
       FieldPicker(icon: Icons.notifications_none, label: 'Lembrar', child: Text('5 minutos antes'), type: FieldPickerType.reminder, onChange: (time) => print(time)),
       RoundedButton(
         title: 'Criar atividade',
-        onPressed: () => CreateTaskPresenter.saveTask(),
+        onPressed: () => CreateTaskPresenter.saveTask(context, database),
       ).padding(0, top: 30)
     ].padding(0, top: 16);
   }
