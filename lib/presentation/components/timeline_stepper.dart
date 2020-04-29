@@ -10,14 +10,10 @@ class TaskSchedule extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.access_time, size: 15, color: PURPLE,),
+        Icon(Icons.access_time),
         Text(
           this.schedule,
-          style: TextStyle(
-            color: PURPLE,
-            fontWeight: FontWeight.bold,
-            fontSize: 12,
-          ),
+          style: Theme.of(context).textTheme.body2,
         ).padding(0, left: 5)
       ],
     ).padding(0, bottom: 5);
@@ -33,14 +29,10 @@ class TaskDuration extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.timer, size: 15, color: PURPLE,),
+        Icon(Icons.timer),
         Text(
           this.duration,
-          style: TextStyle(
-            color: PURPLE,
-            fontWeight: FontWeight.bold,
-            fontSize: 12,
-          ),
+          style: Theme.of(context).textTheme.body2,
         ).padding(0, left: 5)
       ],
     ).padding(0, bottom: 5);

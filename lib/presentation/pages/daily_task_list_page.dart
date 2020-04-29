@@ -9,13 +9,11 @@ class DailyTaskListPage extends StatelessWidget {
     return Scaffold(
       body: TwoColorBackground(
         child: content(context),
-        startColor: PURPLE,
-        endColor: Theme.of(context).backgroundColor,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Routes.openCreateTaskPage(context),
         tooltip: 'Nova atividade',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, size: 24),
       ),
     );
   }

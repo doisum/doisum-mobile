@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TwoColorBackground extends StatelessWidget {
   final Widget child;
@@ -8,8 +9,8 @@ class TwoColorBackground extends StatelessWidget {
   const TwoColorBackground({
     Key key,
     @required this.child,
-    @required this.startColor,
-    @required this.endColor,
+    this.startColor = PURPLE,
+    this.endColor,
   }) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class TwoColorBackground extends StatelessWidget {
         Column(
           children: <Widget>[
             Expanded(child: Container(color: this.startColor)),
-            Expanded(child: Container(color: this.endColor)),
+            Expanded(child: Container(color: this.endColor ?? Theme.of(context).backgroundColor)),
           ],
         ),
         this.child,
