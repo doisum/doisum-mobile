@@ -61,7 +61,7 @@ class DailyTaskListPage extends StatelessWidget {
               ),
               child: TaskCard(tasks.elementAt(index)));
         },
-        childCount: tasks != null ? tasks.length : 0,
+        childCount: tasks?.length ?? 0,
       ),
     );
   }
