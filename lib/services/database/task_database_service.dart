@@ -47,7 +47,7 @@ class TaskDatabaseService extends AbstractTaskDatabaseService {
   @override
   Future<Task> findTaskById(@required int id) async {
     List<Map> maps = await database.query(tableTasks,
-        columns: ['id', 'name', 'status', 'recurrence', 'startDate', 'endDate'],
+        columns: ['id', 'name', 'status', 'recurrence', 'startDate', 'endDate', 'startHour', 'startMinute', 'endHour', 'endMinute'],
         where: 'id = ?',
         whereArgs: [id]);
     if (maps.length > 0) {

@@ -6,8 +6,10 @@ class Task {
   final TaskStatus status;
   final CategoryType type;
   final List<Weekday> recurrence;
-  final DateTime startDate;
-  final DateTime endDate;
+  final int startHour;
+  final int startMinute;
+  final int endHour;
+  final int endMinute;
 
   Task({
     this.id,
@@ -15,8 +17,10 @@ class Task {
     this.status,
     this.type,
     this.recurrence,
-    this.startDate,
-    this.endDate,
+    this.startHour,
+    this.startMinute,
+    this.endHour,
+    this.endMinute,
   });
 
   // Convert a Note object into a Map object
@@ -28,8 +32,10 @@ class Task {
       'name': name,
       'status': status.toString(),
       'recurrence': weekDay,
-      'startDate': startDate.toString(),
-      'endDate': endDate.toString(),
+      'startHour': startHour.toString(),
+      'startMinute': startMinute.toString(),
+      'endHour': endHour.toString(),
+      'endMinute': endMinute.toString(),
     };
   }
 
@@ -47,8 +53,10 @@ class Task {
       status: TaskStatus.values
           .firstWhere((e) => e.toString() == taskMap['status']),
       recurrence: weekDayEnum,
-      endDate: DateTime.parse(taskMap['endDate']),
-      startDate: DateTime.parse(taskMap['startDate']),
+      startHour: taskMap['startHour'],
+      startMinute: taskMap['startMinute'],
+      endHour: taskMap['endHour'],
+      endMinute: taskMap['endMinute'],
     );
   }
 }
