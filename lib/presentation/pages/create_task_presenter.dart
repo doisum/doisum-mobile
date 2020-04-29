@@ -15,7 +15,7 @@ class CreateTaskPresenter {
         : listWeekDay.remove(day);
   }
 
-  static void saveTask(BuildContext context, var database) {
+  static void saveTask(BuildContext context, TaskDatabaseService database) {
     Task t = Task(
         name: taskName,
         status: TaskStatus.pending,
@@ -23,7 +23,7 @@ class CreateTaskPresenter {
         startTime: startTime,
         endTime: endTime,
     );
-    TaskDatabaseService(database: database).addTask(t.asMap(context));
+    database.addTask(t.asMap(context));
     print('saving task in database');
   }
 }

@@ -2,10 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
-class DailyTaskListPage extends StatelessWidget {
+class DailyTaskListPage extends StatefulWidget {
   final NotificationService notificationService;
   final Future<TaskDatabaseService> taskDatabase;
-  var database;
 
   const DailyTaskListPage({
     Key key,
@@ -13,8 +12,15 @@ class DailyTaskListPage extends StatelessWidget {
     @required this.taskDatabase,
   }) : super(key: key);
 
+  @override
+  _DailyTaskListPageState createState() => _DailyTaskListPageState();
+}
+
+class _DailyTaskListPageState extends State<DailyTaskListPage> {
+  TaskDatabaseService database;
+
   Future<List<Task>> listTasks() async {
-    database = await taskDatabase;
+    database = await widget.taskDatabase;
     return database.listTasks();
   }
 

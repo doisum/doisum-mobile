@@ -4,7 +4,7 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 import 'package:healthy_routine_mobile/presentation/components/dismissable_scaffold.dart';
 
 class CreateTaskPage extends StatelessWidget {
-  var database;
+  final TaskDatabaseService database;
 
   CreateTaskPage({Key key, this.database}) : super(key: key);
 
