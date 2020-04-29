@@ -36,14 +36,14 @@ class Task {
     List<String> weekDay = taskMap['recurrence'].split(',');
 
     List<Weekday> weekDayEnum = List.generate(weekDay.length, (idx) {
-      return Weekday.values.firstWhere((e) => e.toString() == weekDay[idx]);
+      return Weekday.values.firstWhere((e) => e.value() == weekDay[idx]);
     });
 
     return Task(
       id: taskMap['id'],
       name: taskMap['name'],
       status: TaskStatus.values
-          .firstWhere((e) => e.toString() == taskMap['status']),
+          .firstWhere((e) => e.value() == taskMap['status']),
       recurrence: weekDayEnum,
       endDate: DateTime.parse(taskMap['endDate']),
       startDate: DateTime.parse(taskMap['startDate']),
