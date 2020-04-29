@@ -11,8 +11,11 @@ export 'package:healthy_routine_mobile/presentation/components/create_task_page/
 export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_picker_types.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_picker_types.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_picker_types.dart';
+export 'package:healthy_routine_mobile/presentation/components/field_switch.dart';
 export 'package:healthy_routine_mobile/presentation/components/field_switch.dart';
 export 'package:healthy_routine_mobile/presentation/components/forms_title_label.dart';
 export 'package:healthy_routine_mobile/presentation/components/labeled_round_checkbox.dart';
@@ -23,6 +26,7 @@ export 'package:healthy_routine_mobile/presentation/components/timeline_stepper.
 export 'package:healthy_routine_mobile/presentation/components/two_color_background.dart';
 export 'package:healthy_routine_mobile/presentation/pages/create_task_page.dart';
 export 'package:healthy_routine_mobile/presentation/pages/daily_task_list_page.dart';
+export 'package:healthy_routine_mobile/presentation/pages/presenter.dart';
 export 'package:healthy_routine_mobile/resources/routes.dart';
 export 'package:healthy_routine_mobile/resources/styles/colors.dart';
 export 'package:healthy_routine_mobile/resources/styles/decoration.dart';
@@ -34,3 +38,5 @@ export 'package:healthy_routine_mobile/services/database/task_database_service.d
 export 'package:healthy_routine_mobile/services/database/task_database_service.dart';
 export 'package:healthy_routine_mobile/utils/extensions/widget_extensions.dart';
 export 'package:healthy_routine_mobile/utils/extensions/widget_extensions.dart';
+export 'package:healthy_routine_mobile/utils/extensions/widget_extensions.dart';
+
