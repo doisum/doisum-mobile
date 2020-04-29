@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 void main() => runApp(Application());
 
@@ -29,13 +31,38 @@ final appTheme = ThemeData(
   secondaryHeaderColor: LIGHT_GRAY,
 );
 
-class Application extends StatelessWidget {
+class Application extends StatefulWidget {
+  _Application createState() => _Application();
+}
+
+class _Application extends State<Application> {
+  NotificationService notificationService = NotificationService();
+  Future<DatabaseProvider> provider;
+  Timer timer;
+  @override
+  initState() {
+    super.initState();
+    notificationService.initLocalNotification();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      timer = Timer(Duration(seconds: 5), () {
+        notificationService.showNotificationWithoutSound();
+      });
+    });
+  }
+
+  Future<TaskDatabaseService> taskDatabase() async {
+    return TaskDatabaseService(database: await DatabaseProvider.database());
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Healthy Routine',
       theme: appTheme,
-      home: DailyTaskListPage(),
+      home: DailyTaskListPage(
+        notificationService: notificationService,
+        taskDatabase: taskDatabase(),
+      ),
       routes: {
         Routes.createTask: (c) => CreateTaskPage(),
       },

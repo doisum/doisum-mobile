@@ -5,14 +5,17 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 class TaskCard extends StatefulWidget {
   final Task task;
 
-  TaskCard({Key key, @required this.task}) : super(key: key);
+  TaskCard(this.task, {Key key}) : super(key: key);
 
   @override
-  _TaskCardState createState() => _TaskCardState();
+  _TaskCardState createState() => _TaskCardState(task);
 }
 
 class _TaskCardState extends State<TaskCard> {
   bool isSelected = false;
+  final Task task;
+
+  _TaskCardState(this.task);
 
   void toggleSelected() {
     setState(() => isSelected = !isSelected);
@@ -80,9 +83,8 @@ class TaskCardContent extends StatelessWidget {
               )
             ],
           ).padding(0, bottom: 3),
-          // TaskSchedule(schedule: this.task.startDate.toString()),
-          // TaskDuration(duration: this.task.endDate.toString()),
-          TaskSchedule(schedule: "7:00 AM - 8:00 AM"),
+          TaskSchedule(schedule: this.task.startTime.format(context)),
+          // TaskDuration(duration: this.task.endTime.toString()),
           TaskDuration(duration: "10 Minutes"),
         ].padding(0, left: 13),
       ).padding(13),

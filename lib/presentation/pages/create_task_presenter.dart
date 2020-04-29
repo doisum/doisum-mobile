@@ -1,7 +1,7 @@
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 import 'package:flutter/material.dart';
 
-class Presenter {
+class CreateTaskPresenter {
   static String taskName;
   static Category category;
   static List<Weekday> listWeekDay = List();
@@ -20,8 +20,8 @@ class Presenter {
         name: taskName,
         status: TaskStatus.pending,
         recurrence: listWeekDay,
-        endDate: DateTime.now(),
-        startDate: DateTime.now(),
+        startTime: startTime,
+        endTime: endTime,
     );
     print(t);
     print('saving task in database');
