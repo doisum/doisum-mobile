@@ -4,6 +4,12 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 class DailyTaskListPage extends StatelessWidget {
   const DailyTaskListPage({Key key}) : super(key: key);
 
+  Future<List<Task>> listTasks() async {
+    var database = await DatabaseProvider.database();
+
+    return TaskDatabaseService(database: database).listTasks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +19,7 @@ class DailyTaskListPage extends StatelessWidget {
           sliverAppBar(context),
           roundCorners(context),
           FutureBuilder(
-            future: new TaskDatabaseService().listTasks(),
+            future: listTasks(),
             builder: (context, projectSnap) {
                 return taskSliverList(context, projectSnap.data);      
             },
