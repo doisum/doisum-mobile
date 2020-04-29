@@ -8,14 +8,14 @@ class Routes {
     Navigator.of(c).pop();
   }
 
-  static openCreateTaskPage(BuildContext c) {
-    Navigator.of(c).push(_createRoute());
+  static openCreateTaskPage(BuildContext c, var database) {
+    Navigator.of(c).push(_createRoute(database));
   }
 
-  static Route _createRoute() {
+  static Route _createRoute(var database) {
     return PageRouteBuilder(
       opaque: false,
-      pageBuilder: (context, animation, secondaryAnimation) => CreateTaskPage(),
+      pageBuilder: (context, animation, secondaryAnimation) => CreateTaskPage(database: database),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
