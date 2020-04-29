@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class TaskCard extends StatefulWidget {
@@ -11,41 +12,82 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
-   final Task task;
-  
+  bool isSelected = false;
+  final Task task;
+
   _TaskCardState(this.task);
+
+  void toggleSelected() {
+    setState(() => isSelected = !isSelected);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: <Widget>[
-        TimelineStepper(this.task).padding(0, bottom: 10),
-        SizedBox(width: 20),
-        Expanded(child: TaskCardContent(this.task).padding(0, top: 20)),
-      ],
-    ).padding(0, horizontal: 20);
+    return AnimatedContainer(
+      duration: Duration(seconds: 2),
+      curve: Curves.easeIn,
+      child: Material(
+        color: TRANSPARENT,
+        child: InkWell(
+          onTap: toggleSelected,
+          child: TaskCardContent(
+            task: widget.task,
+            isSelected: this.isSelected,
+          ).padding(0, top: 20),
+        ),
+      ).padding(0, horizontal: 20),
+    );
   }
 }
 
 class TaskCardContent extends StatelessWidget {
   final Task task;
+  final bool isSelected;
 
-  const TaskCardContent(this.task, {Key key}) : super(key: key);
+  const TaskCardContent(
+      {Key key, @required this.task, @required this.isSelected})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: roundDecoration(color: LIGHT_GRAY.withAlpha(50), radius: 9.5),
+      decoration: BoxDecoration(
+        gradient: new LinearGradient(
+          stops: [0.015, 0.015],
+          colors: [
+            this.task.type.color(),
+            this.task.type.color().withOpacity(0.1)
+          ],
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            this.task.name,
-            style: BOLD,
-          ),
-          Text('00h00'),
-        ],
-      ).padding(10),
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  this.task.name,
+                  style: BOLD,
+                ).padding(0, bottom: 6),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: RoundedCheckbox(
+                  isSelected: this.isSelected,
+                ),
+              )
+            ],
+          ).padding(0, bottom: 3),
+          TaskSchedule(schedule: this.task.startTime.format(context)),
+          // TaskDuration(duration: this.task.endTime.toString()),
+          TaskDuration(duration: "10 Minutes"),
+        ].padding(0, left: 13),
+      ).padding(13),
     );
   }
 }
