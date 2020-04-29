@@ -42,6 +42,12 @@ class DailyTaskListPage extends StatelessWidget {
           builder: (context, projectSnap) {
             return taskSliverList(context, projectSnap.data);
           },
+        ),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Container(
+            color: Theme.of(context).backgroundColor,
+          ),
         )
       ],
     );
