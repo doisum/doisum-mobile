@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
-import 'package:intl/intl.dart';
 
 class TaskCard extends StatefulWidget {
   final Task task;
@@ -44,7 +43,7 @@ class TaskCardContent extends StatelessWidget {
             this.task.name,
             style: BOLD,
           ),
-          Text('${new DateFormat('h:mm a').format(task.startDate)} - ${new DateFormat('h:mm a').format(task.endDate)}'),
+          Text('00h00'),
         ],
       ).padding(10),
     );

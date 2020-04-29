@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:healthy_routine_mobile/healthy_routine.dart';
-import 'package:intl/intl.dart';
 
 class TimelineStepper extends StatelessWidget {
   final Task task;
@@ -10,7 +9,7 @@ class TimelineStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      new DateFormat('h:mm a').format(task.startDate),
+      task.startDate.toString(),
       style: TextStyle(
         color: DARK_GRAY,
         fontWeight: FontWeight.bold,
