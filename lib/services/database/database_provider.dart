@@ -9,7 +9,7 @@ class DatabaseProvider {
       join(await getDatabasesPath(), 'tasks_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status TEXT, recurrence TEXT, startDate TEXT, endDate TEXT)",
+          "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status TEXT, type TEXT, recurrence TEXT, startTime TEXT, endTime TEXT)",
         );
       },
       version: 1,

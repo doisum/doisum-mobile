@@ -4,11 +4,11 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class DailyTaskListPage extends StatelessWidget {
   final NotificationService notificationService;
-
-  const DailyTaskListPage({Key key, this.notificationService}) : super(key: key);
+  var database;
+  DailyTaskListPage({Key key, this.notificationService}) : super(key: key);
 
   Future<List<Task>> listTasks() async {
-    var database = await DatabaseProvider.database();
+    database = await DatabaseProvider.database();
 
     return TaskDatabaseService(database: database).listTasks();
   }
@@ -30,7 +30,7 @@ class DailyTaskListPage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Routes.openCreateTaskPage(context),
+        onPressed: () => Routes.openCreateTaskPage(context, database),
         tooltip: 'Nova atividade',
         child: const Icon(Icons.add),
       ),

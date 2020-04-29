@@ -30,8 +30,8 @@ class Task {
       'name': name,
       'status': status.toString(),
       'recurrence': weekDay,
-      'startTime': startTime.format(context),
-      'endTime': endTime.format(context),
+      'startTime': startTime?.format(context) ?? '',
+      'endTime': endTime?.format(context) ?? '',
     };
   }
 
