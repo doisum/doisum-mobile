@@ -4,36 +4,46 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 
 class DailyTaskListPage extends StatelessWidget {
   final NotificationService notificationService;
+  final Future<TaskDatabaseService> taskDatabase;
   var database;
-  DailyTaskListPage({Key key, this.notificationService}) : super(key: key);
+
+  const DailyTaskListPage({
+    Key key,
+    this.notificationService,
+    @required this.taskDatabase,
+  }) : super(key: key);
 
   Future<List<Task>> listTasks() async {
-    database = await DatabaseProvider.database();
-
-    return TaskDatabaseService(database: database).listTasks();
+    database = await taskDatabase;
+    return database.listTasks();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PURPLE,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          sliverAppBar(context),
-          roundCorners(context),
-          FutureBuilder(
-            future: listTasks(),
-            builder: (context, projectSnap) {
-                return taskSliverList(context, projectSnap.data);      
-            },
-          )
-        ],
+      body: TwoColorBackground(
+        child: content(context),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Routes.openCreateTaskPage(context, database),
         tooltip: 'Nova atividade',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, size: 24),
       ),
+    );
+  }
+
+  CustomScrollView content(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        sliverAppBar(context),
+        roundCorners(context),
+        FutureBuilder(
+          future: listTasks(),
+          builder: (context, projectSnap) {
+            return taskSliverList(context, projectSnap.data);
+          },
+        )
+      ],
     );
   }
 
@@ -59,10 +69,13 @@ class DailyTaskListPage extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
-              ),
-              child: TaskCard(tasks.elementAt(index)));
+            decoration: BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+            ),
+            child: TaskCard(
+              tasks.elementAt(index),
+            ).padding(0, horizontal: 20, vertical: 10),
+          );
         },
         childCount: tasks?.length ?? 0,
       ),

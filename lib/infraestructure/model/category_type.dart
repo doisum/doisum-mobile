@@ -8,19 +8,19 @@ extension CategoryTypeExtension on CategoryType {
     Color color;
     switch (this) {
       case CategoryType.exercise:
-        color = CategoryColors.RED;
+        color = CategoryColors.GREEN;
         break;
       case CategoryType.mindfulness:
         color = CategoryColors.BLUE;
         break;
       case CategoryType.learning:
-        color = CategoryColors.YELLOW;
+        color = CategoryColors.ORANGE;
         break;
       case CategoryType.selfCare:
-        color = CategoryColors.LIGHT_GREEN;
+        color = CategoryColors.PINK;
         break;
       case CategoryType.work:
-        color = CategoryColors.PINK;
+        color = CategoryColors.WATER_BLUE;
         break;
     }
     return color;

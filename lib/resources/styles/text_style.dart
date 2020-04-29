@@ -17,6 +17,11 @@ const WHITE_FONT = TextStyle(
   color: WHITE,
 );
 
+const LIGHT_PURPLE_BOLD = TextStyle(
+  color: DEEP_PURPLE_50,
+  fontSize: 12
+);
+
 const PURPLE_BOLD = TextStyle(
   color: DEEP_PURPLE_75,
   fontWeight: FontWeight.bold

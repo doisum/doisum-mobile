@@ -4,6 +4,10 @@ import 'package:healthy_routine_mobile/healthy_routine.dart';
 class Routes {
   static String createTask = '/create_task';
 
+  static pop(BuildContext c) {
+    Navigator.of(c).pop();
+  }
+
   static openCreateTaskPage(BuildContext c, var database) {
     Navigator.of(c).push(_createRoute(database));
   }
